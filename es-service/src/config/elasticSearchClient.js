@@ -1,11 +1,14 @@
 const { Client } = require('@elastic/elasticsearch');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 // Create a new client instance
 const client = new Client({
-    node: 'http://localhost:9200',
+    node: process.env.ES_URL,
     auth: {
-        username: "elastic",
-        password: "elastic"
+        username: process.env.ES_USERNAME,
+        password: process.env.ES_PASSWORD
     }
  });
 
