@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const client = require('../config/elasticSearchClient');
 
-router.get('/search', async (req, res) => {
+router.post('/search', async (req, res) => {
 
     const query = req.body;
     console.log(query);
@@ -14,7 +14,6 @@ router.get('/search', async (req, res) => {
                 query: query
             }
         })
-        console.log(response);
         res.send({ "data": response.hits.hits });
 
     }
