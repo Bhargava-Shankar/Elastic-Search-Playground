@@ -60,8 +60,8 @@ const createCleanEmployeeIndex = async () => {
 };
 
 const dataLoader = async () => {
-    const csvFilePath = './data/cleanedEmployee.csv';
-    const indexExists = await client.indices.exists({ index: 'employees-cleaned' });
+  const csvFilePath = './data/cleanedEmployee.csv';
+  const indexExists = await client.indices.exists({ index: 'employees-cleaned' });
     if (indexExists) {
         console.log('Index already exists');
         return;
@@ -78,5 +78,5 @@ const dataLoader = async () => {
     }   
 }
 
-module.exports = { createCleanEmployeeIndex, dataLoader };
+module.exports = { createCleanEmployeeIndex, dataLoader, csvToJson };
 
