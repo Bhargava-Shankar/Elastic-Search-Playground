@@ -7,6 +7,14 @@ const nextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'http://localhost:5000/:path*', // Replace with your Express API server address
+      },
+    ];
+  }
 };
 
 export default nextConfig;

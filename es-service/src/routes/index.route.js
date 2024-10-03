@@ -5,7 +5,7 @@ const client = require('../config/elasticSearchClient');
 
 const { createCollection,indexData,searchByColumn,getEmpCount,delEmpById, getDeptFacet } = require("../controllers/index.controller");
 
-router.post('/search/:pCollectionName', async (req, res) => {
+router.get('/search/:pCollectionName', async (req, res) => {
 
     const { pCollectionName } = req.params
     const { pColumnName, pColumnValue } = req.query;
@@ -16,7 +16,7 @@ router.post('/search/:pCollectionName', async (req, res) => {
     if (pColumnName != undefined && pColumnValue != undefined) {
         query = {
             "match": {
-               "Job Title" : "Analyst"
+                   [pColumnName] : pColumnValue
             }
         }
         console.log(query)
@@ -27,7 +27,7 @@ router.post('/search/:pCollectionName', async (req, res) => {
             body: {
                 query: query
             },
-            size: 1000
+            size: 1500
         })
         res.send({ "total" : response.hits.hits.length , "data": response.hits.hits });
 
@@ -64,7 +64,7 @@ router.post('/index-data', async (req, res) => {
 })
 
 
-router.post("/get-emp-count/:pCollectionName", async (req, res) => {
+router.get("/get-emp-count/:pCollectionName", async (req, res) => {
     const {pCollectionName}= req.params;
     try {
         const data = await getEmpCount(pCollectionName);

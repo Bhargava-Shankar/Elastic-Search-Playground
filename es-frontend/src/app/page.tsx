@@ -3,6 +3,7 @@ import React, { useState, useRef } from 'react'
 import { JsonInput, MantineThemeProvider } from '@mantine/core'
 import { MantineProvider } from '@mantine/core'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const placeholderValue = `{"match_all": {}}`
 
@@ -29,9 +30,15 @@ const Home = () => {
   return (
 
     <div>
-      <div className='flex flex-row justify-center items-center'>
-        <Image src="https://syde.com/wp-content/uploads/sites/2/2018/12/elasticsearch6390.jpg" alt="logo" width={80} height={80} />
-        <h1 className='text-4xl font-bold pb-5 pt-5'>Elastic Search Playground</h1>
+      <div className='flex flex-row justify-between mx-5 items-center'>
+        <div className='flex flex-row items-center'>
+          <Image src="https://syde.com/wp-content/uploads/sites/2/2018/12/elasticsearch6390.jpg" alt="logo" width={80} height={80} />
+                  <h1 className='text-4xl font-bold pb-5 pt-5'>Elastic Search Playground</h1>
+        </div>
+        
+        <h5>
+          <Link href="/dashboard">Dashboard</Link>
+        </h5>
       </div>
        <div className='flex flex-row '>
       <div className='border-2 border-grey-300 rounded-md p-0 w-1/2 overflow-y-auto h-[500px] '>
